@@ -1,38 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from "@material-ui/core/styles";
+import { WebListsContext } from "../contexts/webLists.context";
+import AvatorCard from "../components/AvatorCard";
+import AppContainer from "../components/AppContainer"
 
 import Divider from "./Divider";
 
+const useStyles = withStyles({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent:"center"
+  }
+});
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+
+const TabPanel = props => {
+
+  const classes = useStyles(props);
+
+  const { onPageData } = useContext(WebListsContext);
+  const { webs } = onPageData[0];
+
   return (
-    <div
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <Divider vertical space="24px" />
-          {children}
-
-          <div>Edit</div>
-
-        </div>
-      )}
+    <div className={classes.root}>
+      <AppContainer>
+        {webs.map(web => <AvatorCard label={web.webName} url={web.url}/>)}
+      </AppContainer>
     </div>
-  );
+  )
 }
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
 
 
 export default TabPanel;

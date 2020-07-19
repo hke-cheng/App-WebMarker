@@ -23,11 +23,11 @@ const AvatorCard = props => {
   const classes = useStyles(props);
   return (
 
-        <div className={classes.avatorCard}>
-          <Avator />
-          <Divider vertical space="8px" />
-          <Body1>{props.label}</Body1>
-        </div>
+    <div className={classes.avatorCard}>
+      <Avator url={props.url}/>
+      <Divider vertical space="8px" />
+      <Body1>{props.label}</Body1>
+    </div>
 
   )
 }

@@ -1,31 +1,31 @@
+import {useContext} from "react";
 import Avator from "../components/Avator";
 import Divider from "../components/Divider";
+import Tabs from "../components/Tabs";
 import Page from "../components/Page";
 import { Body1 } from "../components/Texts";
 import { makeStyles } from "@material-ui/core/styles";
+import { WebListsProvider } from "../contexts/webLists.context";
+import TabPanel from "../components/TabPanel";
+
+
 
 const useStyles = makeStyles({
-  appContainer: {
-    background: "white",
-    display: "flex",
-    padding: "0px",
-    borderRadius: "20px"
-  },
 
 });
 
 const Index = props => {
 
   const classes = useStyles(props);
+ 
+
   return (
-    <Page>
-
-      {/* webList-Tab */}
-
-      {/* <PopularTabs /> */}
-
-
-    </Page>
+    <WebListsProvider >
+      <Page>
+        <Tabs />
+        <TabPanel />
+      </Page>
+    </WebListsProvider>
   )
 }
 

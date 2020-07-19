@@ -23,7 +23,7 @@ const Avator = props => {
 
   const classes = useStyles(props);
   return (
-      <a href="https://www.google.com" target="_blank">
+      <a href={props.url} target="_blank">
         <div className={classes.root}>
           {/* <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png"
